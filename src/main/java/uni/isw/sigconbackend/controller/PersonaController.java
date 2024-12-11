@@ -56,12 +56,28 @@ public class PersonaController {
         
     }
     
+    @GetMapping("/findNdocumento")
+    public ResponseEntity<?> findByNdocumento(@RequestBody PersonaRequest personaRequest){
+        logger.info(">findNdocumento" +  personaRequest.toString());
+        PersonaResponse personaResponse;
+        try{
+            personaResponse=personaService.findByNdocumento(personaRequest.getNDocumento());
+        }catch(Exception e){
+            logger.error("Error inesperado", e);
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if (personaResponse==null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse.builder().message("Persona-Ndocumento not found").build());           
+        return ResponseEntity.ok(personaResponse);        
+        
+    }
+    
     @PostMapping()
-    public ResponseEntity<?> insertPersona(@RequestBody PersonaRequest personaResquest){
-        logger.info(">insert" +  personaResquest.toString());
+    public ResponseEntity<?> insertPersona(@RequestBody PersonaRequest personaRequest){
+        logger.info(">insert " +  personaRequest.toString());
         PersonaResponse personaResponse;
         try{            
-            personaResponse=personaService.insertPersona(personaResquest);
+            personaResponse=(PersonaResponse)personaService.insertPersona(personaRequest);
         }catch(Exception e){
             logger.error("Error inesperado", e);
             return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);

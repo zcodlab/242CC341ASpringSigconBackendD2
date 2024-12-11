@@ -4,11 +4,11 @@
  */
 package uni.isw.sigconbackend.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import uni.isw.sigconbackend.model.Ubigeo;
 
 @Repository
-public interface UbigeoRepository extends CrudRepository<Ubigeo,String>{
+public interface UbigeoRepository extends JpaRepository<Ubigeo,String>{
     
 }

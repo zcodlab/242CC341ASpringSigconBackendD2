@@ -29,9 +29,12 @@ public class PersonaService {
     }
     public PersonaResponse findPersona(Long id){
         return PersonaResponse.fromEntity(personaRepository.findById(id).get());                
+    }    
+    public PersonaResponse findByNdocumento(String nDocumento){
+        return PersonaResponse.fromEntity((Persona) personaRepository.findBynDocumento(nDocumento).get(0));                
     }
     
-    public PersonaResponse insertPersona(PersonaRequest personaRequest){        
+    public PersonaResponse insertPersona(PersonaRequest personaRequest){                
         Integer idTipoDocumento=personaRequest.getIdTipoDocumento();
         TipoDocumento tipoDocumento=tipoDocumentoRepository.findById(idTipoDocumento).get();
         logger.info(">insertPersona-tipoDocumento" +  tipoDocumento.toString());
@@ -52,8 +55,8 @@ public class PersonaService {
                 personaRequest.getDireccion(),
                 tipoDocumento,
                 ubigeo);
-        persona=personaRepository.save(persona);
-        PersonaResponse personaResponse=PersonaResponse.fromEntity(persona);
+        persona=personaRepository.save(persona);        
+        PersonaResponse personaResponse=PersonaResponse.fromEntity(persona);        
         return personaResponse;
     } 
     

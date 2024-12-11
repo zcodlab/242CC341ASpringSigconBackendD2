@@ -29,9 +29,9 @@ public class PersonaResponse {
     public static PersonaResponse fromEntity(Persona persona) {
         return PersonaResponse.builder()
                 .idPersona(persona.getIdPersona())
-                .apellidoPaterno(persona.getApellidoPaterno())
-                .apellidoMaterno(persona.getApellidoMaterno())
-                .nombres(persona.getNombres())
+                .apellidoPaterno(persona.getApellidoPaterno()==null ? "":persona.getApellidoPaterno())
+                .apellidoMaterno(persona.getApellidoMaterno()==null ? "":persona.getApellidoMaterno())
+                .nombres(persona.getNombres()==null ? "":persona.getNombres())
                 .fechaNacimiento(persona.getFechaNacimiento())                
                 .nDocumento(persona.getNDocumento())
                 .direccion(persona.getDireccion())            

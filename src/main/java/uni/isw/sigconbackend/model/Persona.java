@@ -41,4 +41,26 @@ public class Persona {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idubigeo", referencedColumnName = "idubigeo")        
     private Ubigeo ubigeo;
+
+    public Persona(String apellidoPaterno, String apellidoMaterno, String nombres, Date fechaNacimiento, String nDocumento, String direccion) {
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.nombres = nombres;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nDocumento = nDocumento;
+        this.direccion = direccion;
+    }
+
+    public Persona(String apellidoPaterno, String apellidoMaterno, String nombres, Date fechaNacimiento, String nDocumento, String direccion, TipoDocumento tipoDocumento, Ubigeo ubigeo) {
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.nombres = nombres;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nDocumento = nDocumento;
+        this.direccion = direccion;
+        this.tipoDocumento = tipoDocumento;
+        this.ubigeo = ubigeo;
+    }
+    
+    
 }

@@ -14,12 +14,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="tipo_documento")
-public class TipoDocumento {
+@Table(name="tipo_predio")
+public class TipoPredio {
     @Id    
-    @Column(name="id_tipo_documento")
-    private Integer idTipoDocumento;
-    @Column(name="descripcion")
+    @Column(name="id_tipo_predio",nullable=false)
+    private Integer idTipoPredio;
+    @Column(name="nomre_predio",nullable=false)
     private String descripcion;    
-    
 }
