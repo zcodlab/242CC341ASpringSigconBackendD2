@@ -91,5 +91,9 @@ public class PredioService {
     public void deletePredio(Long id){
         predioRepository.deleteById(id);
     }
+
+    public PredioResponse findPredioByRuc(String ruc) {
+        return PredioResponse.fromEntity((Predio) predioRepository.findByRuc(ruc).get(0));
+    }
     
 }
